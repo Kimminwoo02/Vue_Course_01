@@ -3,9 +3,37 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: '',
-      confirmedName: ''
+      confirmedName: '',
+      fullname:'',
+      lastName:''
+
 
     };
+  },
+  watch:{
+    counter(value){
+      if (value> 50){
+        this.counter = 0
+      }
+    },
+      
+  
+    lastName(value){
+      if(value ===''){
+        this.fullname = '';
+      }else{
+        this.fullname = this.name+ ' ' + value;
+      }
+    }
+  },
+  computed:{
+    fullname(){
+      console.log('Running again');
+      if(this.name ==='' || this.lastName ===''){
+        return ''
+      }
+      return this.name + ' ' + this.lastName;
+    }
   },
   methods:{
     outputFullname(){
