@@ -21,7 +21,10 @@
       <button @click="addGoal">Add Goal</button>
       <p v-show="goals.length === 0">No goals have been added yet - please start adding some!</p>
       <ul>
-        <li v-for="(goal, idx) in goals" @click="reomveGoal(idx)">{{ goal }} - {{ idx }}</li>
+        <li v-for="(goal, idx) in goals" :key="goal" @click="reomveGoal(idx)">
+          <p>{{ goal }} - {{ idx }}</p>
+          <input type="text" @click.stop>
+        </li>
       </ul>
     </section>
   </body>
