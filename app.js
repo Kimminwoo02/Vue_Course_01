@@ -1,18 +1,38 @@
 const app = Vue.createApp({
   data() {
     return {
-        enterdGoalValue: '',
-        goals: [] };
+      currentUserInput: '',
+      message: 'Vue is great!',
+    };
   },
-  methods:{
-    addGoal(){
-        this.goals.push(this.enterdGoalValue);
-
+  methods: {
+    saveInput(event) {
+      this.currentUserInput = event.target.value;
     },
-    removeGoal(idx){
-      this.goals.splice(idx,1);
-    }
-  }
+    setText() {
+      this.message = this.currentUserInput;
+    },
+  },
 });
 
-app.mount('#user-goals');
+app.mount('#app');
+
+//
+
+const data = {
+  message: 'vue!',
+  longMessage : 'Vue is beautiful'
+};
+const handler = {
+  set(target, key, value){
+    if(key ==='message'){
+      target.longMessage = value + 'World!' 
+    }
+    target.message = value;
+  }
+};
+const proxy = new Proxy(data,handler);
+
+proxy.message = 'Hello!!!!';
+
+console.log(proxy.longMessage);
