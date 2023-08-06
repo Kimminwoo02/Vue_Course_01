@@ -13,10 +13,30 @@ const app = Vue.createApp({
       ///this.message = this.currentUserInput;
       this.message = this.$refs.userText;
     },
+    beforeCreate(){
+      console.log('beforeCreate()');
+    },
+    created(){
+      console.log('created()');
+    },
+    boforeMount(){
+      console.log('beforeMount()');
+    },
+    mounted(){
+      console.log('mounted()');
+    },
+    beforeUpdated(){
+      console.log('beforeUpdated');
+    },
+    update(){
+      console.log('updated()');
+    }
   },
 });
 
 app.mount('#app');
+
+app.unmount();
 
 const app2= Vue.createApp({
   template: `
